@@ -23,5 +23,34 @@
   </dependencies>
   <build>
     <finalName>my-first-maven-project</finalName>
+    <pluginManagement>
+    <plugins>
+    <plugin>
+    	<groupId>org.apache.tomcat.maven</groupId>
+    	<artifactId>tomcat7-maven-plugin</artifactId>
+    	<version>2.2</version>
+    	<configuration>
+    		<url>http://localhost:7070/manager/html</url>
+    		<server>Tomcat7Server</server>
+    		<username>deployer</username>
+    		<password>deployer</password>
+    		<update>true</update>
+    		<path>my-first-maven-project</path>
+    	</configuration>
+    </plugin>
+    </plugins>
+    </pluginManagement>
   </build>
+  <distributionManagement>
+  	<repository>
+  		<id>releases</id>
+  		<name>Releases</name>
+  		<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+  	</repository>
+  	<snapshotRepository>
+  		<id>snapshots</id>
+  		<name>Snapshots</name>
+  		<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+  	</snapshotRepository>
+  </distributionManagement>
 </project>
